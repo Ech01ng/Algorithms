@@ -1,0 +1,21 @@
+function findMaxAndMin(A):
+    if A is empty:
+        return "Array is empty"
+    
+    maxNum = A[0]  //Initialize maxNum with the first element of A
+    minNum = A[0]  //Initialize minNum with the first element of A
+    
+    for i = 1 to length(A) - 1:
+        if A[i] > maxNum:
+            maxNum = A[i]  //Update maxNum if a larger element is found
+        else if A[i] < minNum:
+            minNum = A[i]  //Update minNum if a smaller element is found
+    
+    return (maxNum, minNum)  //Return the maximum and minimum numbers
+
+//Example usage:
+//Big O = O(n) where n = size of array
+numbers = [5, 2, 9, 1, 7]
+result = findMaxAndMin(numbers)
+print("Maximum number:", result[0])
+print("Minimum number:", result[1])
