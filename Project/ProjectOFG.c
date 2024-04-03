@@ -51,6 +51,10 @@ void merge_sort(struct product_line line_array[], int left, int right);
 void merge(struct product_line line_array[], int left, int middle, int right);
 void report_on_productID(product_line* line_array, int lines, int log_size);
 int compare_lines(product_line* line1, product_line* line2);
+void merge_sort_issue(product_line* line_array);
+void merge_issue(product_line line_array[], int left, int middle, int right);
+int compare_issue(product_line* line1, product_line* line2);
+void search_issue_code(product_line* line_array);
 
 int main() {
     //Array of product_line structs
@@ -63,6 +67,13 @@ int main() {
     printf("\n---TASK 1) Report based on product ID---\n");
     report_on_productID(line_array, 1, 11);
     
+    //Sort the array using merge sort
+    printf("\n---TASK 2) Issues Report---\n");
+    merge_sort_issue(line_array);
+
+    //Search for a specific issue code in the array
+    printf("\n---TASK 3) Search for Issue Code---\n");
+    search_issue_code(line_array);
 
     /*Use this code to print the data in the array (FOR TESTING PURPOSES ONLY)
     //Print the data in the array
@@ -87,7 +98,10 @@ int main() {
     return 0;
 }
 
+// ---------- Task 1 Start ----------
+
 //Function to print the merged array
+//Big O Notation: O(n log n)
 void report_on_productID(product_line* line_array, int lines, int log_size) {
     
     //Merge and Sort the array
@@ -209,6 +223,119 @@ int compare_lines(product_line* line1, product_line* line2)
 
 	//Both entries are completely equal, return 0
 	return 0; 
+}
+
+// ---------- Task 1 End ----------
+
+
+// ---------- Task 2 Start ----------
+
+//Reusing the merge sort function from Task 1 to sort the array based on issue code
+//Big O Notation: O(n log n)
+void merge_sort_issue(product_line* line_array) {
+    
+    //Merge and Sort the array
+    merge_sort(line_array, 0, 43);
+    
+
+    //Print the logs for the first line
+    printf("\n---Logs---\n");
+    for (int i = 0; i < 43; i++) {
+        //Create a temporary instance of the product_line struct for ease of printing
+        product_line log = line_array[i];
+        printf("Product ID: %d, Line Code: %d, Issue Code: %d\n", log.productId, log.lineCode, log.issue.code);
+    }
+}
+
+//Reusing the merge function from Task 1 to merge the array based on issue code
+void merge_issue(product_line line_array[], int left, int middle, int right) {
+    int i, j, k;
+    int n1 = middle - left + 1;
+    int n2 = right - middle;
+
+    //Create temporary arrays
+    struct product_line L[n1], R[n2];
+
+    //Copy data to temporary arrays L[] and R[]
+    for (i = 0; i < n1; i++) {
+        L[i] = line_array[left + i];
+    }
+    for (j = 0; j < n2; j++) {
+        R[j] = line_array[middle + 1 + j];
+    }
+
+    //Merge the temporary arrays back into line_array[]
+    i = 0;
+    j = 0;
+    k = left;
+    //Sort using the compare_lines function
+    while (i < n1 && j < n2) {
+        if (compare_issue(&L[i], &R[j]) <= 0) {
+            line_array[k] = L[i];
+            i++;
+        } else {
+            line_array[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    //Copy the remaining elements of L[], if there are any
+    while (i < n1) {
+        line_array[k] = L[i];
+        i++;
+        k++;
+    }
+
+    // Copy the remaining elements of R[], if there are any
+    while (j < n2) {
+        line_array[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+//Reusing the compare_lines function from Task 1 to compare the lines based on issue code
+int compare_issue(product_line* line1, product_line* line2)
+{
+    //Compare by product ID, if they're not equal, return the difference
+    if (line1->productId.numeric != line2->productId.numeric) return line1->productId.numeric - line2->productId.numeric;
+
+    //If product ID is equal, compare by line code, and return the difference
+    if (line1->lineCode.numeric != line2->lineCode.numeric) return line1->lineCode.numeric - line2->lineCode.numeric;
+
+    //If line code and product id are also equal, compare by issue code and return the difference
+    if (line1->issue.code != line2->issue.code) return line1->issue.code - line2->issue.code;
+
+    //Both entries are completely equal, return 0
+    return 0; 
+}
+
+// ---------- Task 2 End ----------
+
+
+// ---------- Task 3 Start ----------
+
+//Function to search for a specific issue code in the array
+//Big O Notation: O(n)
+void search_issue_code(product_line* line_array) {
+    //Variable to store the number of occurrences of the issue code
+    int issue_code, occurrences = 0;
+
+    // Ask the user for the issue code
+    printf("Enter the issue code: ");
+    scanf("%d", &issue_code);
+
+    //Iterate through the array and count the number of occurrences of the issue code
+    for (int i = 0; i < 44; i++) {
+        if (line_array[i].issue.code == issue_code) {
+            occurrences++;
+        }
+    }
+
+    //Print the number of occurrences of the issue code
+    printf("\n---Issue Code %d Occurrences---\n", issue_code);
+    printf("Number of Occurrences: %d\n", occurrences);
 }
 
 //This is not a part of the main code, but is used to test the functionality of the program
