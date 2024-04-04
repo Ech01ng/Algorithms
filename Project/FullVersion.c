@@ -109,7 +109,8 @@ int main(void)
 /* Task 1) Generate a report sorted by product id, issue code, and then date and time */
 
 
-// Reporting function, prints the result of the merge
+//Reporting function, prints the result of the merge
+//Big O Notation: O(NLogN) due to the merge sort algorithm
 void report_on_productID(product_line** line_array, int lines, int log_size)
 {
 	for (int i = 0; i < lines; i++) 
@@ -207,8 +208,8 @@ int compare_lines(product_line* line1, product_line* line2)
 Reporting function, merges all four lines into a single array sorted by product ID
 Due to task 1), the data is in perfect order for this operation
 Then reports based on product id, and returns the total issue count back to main via pointer notation
+Big O Notation: O(NLogN) due to the merge sort algorithm
 */
-
 merged_issues* report_on_issues(product_line** line_array, int lines, int log_size, int* total_issues)
 {
 	// Create an array to store all the merged issues instances, dynamically to ensure we can return that memory to main
