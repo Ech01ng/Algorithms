@@ -51,7 +51,6 @@ void merge_sort(struct product_line line_array[], int left, int right);
 void merge(struct product_line line_array[], int left, int middle, int right);
 void report_on_productID(product_line* line_array, int lines, int log_size);
 int compare_lines(product_line* line1, product_line* line2);
-void merge_sort_issue(product_line* line_array);
 void print_all(product_line line_array[], int left, int right);
 void search_issue_code(product_line* line_array);
 void list_issue_codes(product_line* line_array);
@@ -202,10 +201,13 @@ By comparing the product ID, issue code, and date
 */
 int compare_lines(product_line* line1, product_line* line2)
 {
-	//Compare by product ID, if they're not equal, return the difference
+    //Compare by line code, if they're not equal, return the difference
+    if (line1->lineCode.numeric != line2->lineCode.numeric) return line1->lineCode.numeric - line2->lineCode.numeric;
+
+    //If line is equal, compare by product ID, and return the difference
 	if (line1->productId.numeric != line2->productId.numeric) return line1->productId.numeric - line2->productId.numeric;
 
-	//If product ID is equal, compare by issue code, and return the difference
+	//If product ID is equal, compare by issue code and return the difference
 	if (line1->issue.code != line2->issue.code) return line1->issue.code - line2->issue.code;
 
 	//If issue code and product id are also equal, compare by date and return the difference
@@ -332,8 +334,8 @@ void insert_test_data(struct product_line line_array[])
 	//Line 1 Test Data
 	line_array[0] = (struct product_line){.lineCode = 1, .batchCode = 101, .batchDateTime = {15, 10, 30}, .productId = 105, .issue = {404, "Leakage detected"}, .resolution = {200, "Leak sealed"}, .reportingEmployee = 501};
     line_array[1] = (struct product_line){.lineCode = 1, .batchCode = 102, .batchDateTime = {16, 11, 45}, .productId = 107, .issue = {402, "Incorrect labeling"}, .resolution = {201, "Labels corrected"}, .reportingEmployee = 502};
-    line_array[2] = (struct product_line){.lineCode = 1, .batchCode = 103, .batchDateTime = {17, 9, 15}, .productId = 104, .issue = {401, "Temperature deviation"}, .resolution = {202, "Temperature stabilized"}, .reportingEmployee = 503};
-    line_array[3] = (struct product_line){.lineCode = 1, .batchCode = 104, .batchDateTime = {18, 14, 0}, .productId = 103, .issue = {401, "Temperature deviation"}, .resolution = {202, "Temperature stabilized"}, .reportingEmployee = 504};
+    line_array[2] = (struct product_line){.lineCode = 1, .batchCode = 103, .batchDateTime = {17, 9, 15}, .productId = 104, .issue = {401, "Temperature deviation"}, .resolution = {202, "Temperature stabilized"}, .reportingEmployee = 503};//Done the Same for testing
+    line_array[3] = (struct product_line){.lineCode = 1, .batchCode = 104, .batchDateTime = {18, 14, 0}, .productId = 103, .issue = {401, "Temperature deviation"}, .resolution = {202, "Temperature stabilized"}, .reportingEmployee = 504};//Done the Same for testing
     line_array[4] = (struct product_line){.lineCode = 1, .batchCode = 105, .batchDateTime = {19, 12, 30}, .productId = 105, .issue = {405, "Equipment failure"}, .resolution = {204, "Equipment repaired"}, .reportingEmployee = 505};
     line_array[5] = (struct product_line){.lineCode = 1, .batchCode = 106, .batchDateTime = {20, 13, 45}, .productId = 106, .issue = {406, "Software glitch"}, .resolution = {205, "Software updated"}, .reportingEmployee = 506};
     line_array[6] = (struct product_line){.lineCode = 1, .batchCode = 107, .batchDateTime = {21, 15, 0}, .productId = 107, .issue = {407, "Human error"}, .resolution = {206, "Error corrected"}, .reportingEmployee = 507};
@@ -345,7 +347,8 @@ void insert_test_data(struct product_line line_array[])
     //Line 2 Test Data
     line_array[11] = (struct product_line){.lineCode = 2, .batchCode = 201, .batchDateTime = {12, 8, 30}, .productId = 201, .issue = {408, "Missing component"}, .resolution = {206, "Component added"}, .reportingEmployee = 507};
     line_array[12] = (struct product_line){.lineCode = 2, .batchCode = 202, .batchDateTime = {13, 12, 45}, .productId = 202, .issue = {410, "Improper seal"}, .resolution = {207, "Seal reapplied"}, .reportingEmployee = 508};
-    line_array[13] = (struct product_line){.lineCode = 2, .batchCode = 203, .batchDateTime = {14, 10, 15}, .productId = 203, .issue = {409, "Cracked vial"}, .resolution = {208, "Vial replaced"}, .reportingEmployee = 509};
+    //Even though it's prod ID is part of line 2, it is manufactured in line 1 hence it's grouped in line 1 for testing
+    line_array[13] = (struct product_line){.lineCode = 1, .batchCode = 203, .batchDateTime = {14, 10, 15}, .productId = 203, .issue = {409, "Cracked vial"}, .resolution = {208, "Vial replaced"}, .reportingEmployee = 509};
     line_array[14] = (struct product_line){.lineCode = 2, .batchCode = 204, .batchDateTime = {15, 16, 0}, .productId = 207, .issue = {414, "Documentation error"}, .resolution = {209, "Documentation corrected"}, .reportingEmployee = 510};
     line_array[15] = (struct product_line){.lineCode = 2, .batchCode = 205, .batchDateTime = {16, 14, 30}, .productId = 205, .issue = {412, "Labeling missing"}, .resolution = {210, "Labeling completed"}, .reportingEmployee = 511};
     line_array[16] = (struct product_line){.lineCode = 2, .batchCode = 206, .batchDateTime = {17, 15, 45}, .productId = 206, .issue = {413, "Test failure"}, .resolution = {211, "Re-tested successfully"}, .reportingEmployee = 512};
@@ -372,7 +375,8 @@ void insert_test_data(struct product_line line_array[])
     line_array[33] = (struct product_line){.lineCode = 4, .batchCode = 401, .batchDateTime = {25, 9, 30}, .productId = 401, .issue = {423, "Package tear"}, .resolution = {215, "Package replaced"}, .reportingEmployee = 513};
     line_array[34] = (struct product_line){.lineCode = 4, .batchCode = 402, .batchDateTime = {26, 14, 45}, .productId = 402, .issue = {422, "Machine jam"}, .resolution = {213, "Jam cleared"}, .reportingEmployee = 514};
     line_array[35] = (struct product_line){.lineCode = 4, .batchCode = 403, .batchDateTime = {27, 12, 15}, .productId = 403, .issue = {411, "Incorrect dosage"}, .resolution = {214, "Dosage corrected"}, .reportingEmployee = 515};
-    line_array[36] = (struct product_line){.lineCode = 4, .batchCode = 404, .batchDateTime = {28, 17, 0}, .productId = 408, .issue = {423, "Package tear"}, .resolution = {215, "Package replaced"}, .reportingEmployee = 516};
+    //Even though it's prod ID is part of line 4, it is manufactured in line 2 hence it's grouped in line 2 for testing
+    line_array[36] = (struct product_line){.lineCode = 2, .batchCode = 404, .batchDateTime = {28, 17, 0}, .productId = 408, .issue = {423, "Package tear"}, .resolution = {215, "Package replaced"}, .reportingEmployee = 516};
     line_array[37] = (struct product_line){.lineCode = 4, .batchCode = 405, .batchDateTime = {29, 11, 30}, .productId = 405, .issue = {424, "Label error"}, .resolution = {216, "Label fixed"}, .reportingEmployee = 517};
     line_array[38] = (struct product_line){.lineCode = 4, .batchCode = 406, .batchDateTime = {31, 10, 45}, .productId = 406, .issue = {423, "Package tear"}, .resolution = {215, "Package replaced"}, .reportingEmployee = 518};
     line_array[39] = (struct product_line){.lineCode = 4, .batchCode = 407, .batchDateTime = {1, 9, 0}, .productId = 410, .issue = {422, "Machine jam"}, .resolution = {213, "Jam cleared"}, .reportingEmployee = 519};
