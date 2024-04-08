@@ -53,7 +53,6 @@ void report_on_productID(product_line* line_array, int lines, int log_size);
 int compare_lines(product_line* line1, product_line* line2);
 void print_all(product_line line_array[], int left, int right);
 void search_issue_code(product_line* line_array);
-void list_issue_codes(product_line* line_array);
 void count_issues_for_all_products(product_line* line_array, int array_size);
 
 int main() {
@@ -71,13 +70,12 @@ int main() {
     printf("\n---TASK 2) Issues Report---\n");
     print_all(line_array, 0, 43);
 
-    //Search for a specific issue code in the array
+    //Search for a specific Product ID and list it's earliest Issue code in the array
     printf("\n---TASK 3) Search for Issue Code---\n\n");
     search_issue_code(line_array);
 
     //List all the issue codes, the product ID related and their descriptions
     printf("\n---TASK 4) List Issue Codes---\n");
-    list_issue_codes(line_array);
     count_issues_for_all_products(line_array, 44);
 
     return 0;
@@ -101,7 +99,7 @@ void report_on_productID(product_line* line_array, int lines, int log_size) {
     for (int i = 0; i < log_size; i++) {
         //Create a temporary instance of the product_line struct for ease of printing
         product_line log = line_array[i];
-        printf("Product ID: %d, Issue Code: %d, Date: %02d-%02d-%02d\n", log.productId, log.issue.code,
+        printf("Product ID: %d, Issue Code: %d, Date & Time: %02d-%02d:%02d\n", log.productId, log.issue.code,
             log.batchDateTime.dayOfMonth, log.batchDateTime.hourOfDay, log.batchDateTime.minuteOfHour);
     }
 
@@ -110,7 +108,7 @@ void report_on_productID(product_line* line_array, int lines, int log_size) {
     for (int i = log_size; i < 2 * log_size; i++) {
         //Create a temporary instance of the product_line struct for ease of printing
         product_line log = line_array[i];
-        printf("Product ID: %d, Issue Code: %d, Date: %02d-%02d-%02d\n", log.productId, log.issue.code,
+        printf("Product ID: %d, Issue Code: %d, Date & Time: %02d-%02d:%02d\n", log.productId, log.issue.code,
             log.batchDateTime.dayOfMonth, log.batchDateTime.hourOfDay, log.batchDateTime.minuteOfHour);
     }
 
@@ -119,7 +117,7 @@ void report_on_productID(product_line* line_array, int lines, int log_size) {
     for (int i = 2 * log_size; i < 3 * log_size; i++) {
         //Create a temporary instance of the product_line struct for ease of printing
         product_line log = line_array[i];
-        printf("Product ID: %d, Issue Code: %d, Date: %02d-%02d-%02d\n", log.productId, log.issue.code,
+        printf("Product ID: %d, Issue Code: %d, Date & Time: %02d-%02d:%02d\n", log.productId, log.issue.code,
             log.batchDateTime.dayOfMonth, log.batchDateTime.hourOfDay, log.batchDateTime.minuteOfHour);
     }
 
@@ -128,7 +126,7 @@ void report_on_productID(product_line* line_array, int lines, int log_size) {
     for (int i = 3 * log_size; i < 4 * log_size; i++) {
         //Create a temporary instance of the product_line struct for ease of printing
         product_line log = line_array[i];
-        printf("Product ID: %d, Issue Code: %d, Date: %02d-%02d-%02d\n", log.productId, log.issue.code,
+        printf("Product ID: %d, Issue Code: %d, Date & Time: %02d-%02d:%02d\n", log.productId, log.issue.code,
             log.batchDateTime.dayOfMonth, log.batchDateTime.hourOfDay, log.batchDateTime.minuteOfHour);
     }
 }
@@ -240,49 +238,32 @@ void print_all(product_line line_array[], int left, int right) {
 // ---------- Task 3 Start ----------
 
 /*
-Function to search for a specific issue code in the array
+function to show the earliest occurrence of an issue code based on product ID
 Big O Notation: O(n)
-We are iterating through the array once to count the number of occurrences of the issue code
+We are iterating through the array once to find the earliest occurrence of the issue code
 */
 void search_issue_code(product_line* line_array) {
     //Variable to store the number of occurrences of the issue code
-    int issue_code, occurrences = 0;
+    int prod, occurrences = 0;
 
     // Ask the user for the issue code
-    printf("Enter the issue code: ");
-    scanf("%d", &issue_code);
+    printf("Enter the Product ID: ");
+    scanf("%d", &prod);
 
     //Iterate through the array and count the number of occurrences of the issue code
     for (int i = 0; i < 44; i++) {
-        if (line_array[i].issue.code == issue_code) {
+        if (line_array[i].productId.numeric == prod) {
             occurrences++;
+            //Print the first occurrence of the issue code
+            printf("Issue Code: %d, Line Code: %d, Date & Time: %02d-%02d:%02d\n", line_array[i].issue.code, line_array[i].lineCode.numeric, line_array[i].batchDateTime.dayOfMonth, line_array[i].batchDateTime.hourOfDay, line_array[i].batchDateTime.minuteOfHour);
+            break;
         }
-    }
-
-    //Print the number of occurrences of the issue code
-    printf("\n---Issue Code %d Occurrences---\n", issue_code);
-    printf("Number of Occurrences: %d\n", occurrences);
-    if (occurrences == 0) {
-        printf("No occurrences of issue code %d found.\n", issue_code);
     }
 }
 
 // ---------- Task 3 End ----------
 
 // ---------- Task 4 Start ----------
-
-/*
-Function to list all the issue codes, the product ID related and their descriptions
-Big O Notation: O(n)
-We are iterating through the array once to print the issue codes, product IDs, and descriptions
-*/
-void list_issue_codes(product_line* line_array) {
-    //Iterate through the array and print the issue codes, product IDs, and descriptions
-    printf("\n---Issue Codes List---\n");
-    for (int i = 0; i < 44; i++) {
-        printf("Issue Code: %d, Product ID: %d, Description: %s\n", line_array[i].issue.code, line_array[i].productId.numeric, line_array[i].issue.description);
-    }
-}
 
 /*
 Function to count the number of issues for each product
