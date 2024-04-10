@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+//testing
 #define LOG_SIZE 6
 #define LINE_COUNT 4
 #define TOTAL_LOGS (LOG_SIZE * LINE_COUNT)
