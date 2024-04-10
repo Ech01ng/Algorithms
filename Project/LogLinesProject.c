@@ -251,6 +251,7 @@ void search_issue_code(product_line* line_array) {
     scanf("%d", &prod);
 
     //Iterate through the array and count the number of occurrences of the issue code
+    //A linear search
     for (int i = 0; i < 44; i++) {
         if (line_array[i].productId.numeric == prod) {
             occurrences++;
