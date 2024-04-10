@@ -1,0 +1,49 @@
+Program to add two integers
+BeginProgram
+    Read A and B
+    Sum = 0
+    Sum = A + B
+EndProgram
+
+OR
+
+BeginProgram
+    Read A and B
+    DoFor i in range of B
+        A = A + 1
+    EndFor
+
+---
+
+Program to find the Second Largest element in A, B and C
+BeginProgram
+Read a, b, c
+
+    if (a >= b and a >= c)
+
+        if (b >= c)
+            Output b
+        else
+            Output c
+        EndIF
+
+    else if (b >= a and b >= c)
+
+        if (a >= c)
+            Output a
+        else
+            Output c
+        EndIf
+
+    else
+
+        if (a >= b)
+            Output a
+        else
+            Output b
+        EndIf
+    
+    EndIf
+EndProgram
+
+
