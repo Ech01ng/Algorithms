@@ -63,3 +63,6 @@ Thumbs.db
 *.ppt
 *.pptx
 
+# Files
+*.zip
+*.gz
