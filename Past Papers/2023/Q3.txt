@@ -1,0 +1,121 @@
+A:
+
+Linked List: A linear data structure where each element is a separate object, known as a node.
+The data field stores the data, and the next field is a reference (link) to the next node in the sequence.
+
+Queue: Is a type of abstract data type or collection where the entities in the collection are kept in order and the principal (or only)
+operations on the collection are the addition of entities to the rear terminal position, known as enqueue,
+and removal of entities from the front terminal position, known as dequeue.
+This makes the queue a First-In-First-Out (FIFO) data structure.
+
+BST: is a tree data structure in which each node has at most two children, referred to as the left child and the right child.
+For each node, all elements in the left subtree are less than the node, and all elements in the right subtree are greater.
+
+B:
+
+Push
+function push(stack, top, element):
+    if top equals size of stack - 1:
+        print "Stack Overflow" (Stack is full, can't add more elements)
+    else:
+        increment top by 1
+        set stack[top] to element
+
+Pop
+function pop(stack, top):
+    if top equals -1:
+        print "Stack Underflow" (Stack is empty, can't remove more elements)
+        return null
+    else:
+        element = stack[top]
+        decrement top by 1
+        return element
+
+C:
+
+#include <stdio.h>
+#include <stdlib.h>
+
+// Structure for a node
+struct Node
+{
+   int data;
+   struct Node *left;
+   struct Node *right;
+};
+
+// Function to create a new node
+struct Node *createNode(int data)
+{
+   struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
+   newNode->data = data;
+   newNode->left = NULL;
+   newNode->right = NULL;
+   return newNode;
+}
+
+// Function to insert a node
+struct Node *insert(struct Node *root, int data)
+{
+   if (root == NULL)
+   {
+      return createNode(data);
+   }
+   else
+   {
+      if (data < root->data)
+      {
+         root->left = insert(root->left, data);
+      }
+      else
+      {
+         root->right = insert(root->right, data);
+      }
+      return root;
+   }
+}
+
+// Function to print the tree in inorder traversal
+void inorderTraversal(struct Node *root)
+{
+   if (root != NULL)
+   {
+      inorderTraversal(root->left);
+      printf("%d ", root->data);
+      inorderTraversal(root->right);
+   }
+}
+
+int main()
+{
+   struct Node *root = NULL;
+
+   // Insert nodes into the tree
+   // Change the values to test different cases
+   root = insert(root, 3);
+   root = insert(root, 5);
+   root = insert(root, 6);
+   root = insert(root, 1);
+   root = insert(root, 2);
+   root = insert(root, 4);
+   root = insert(root, 7);
+
+   // Print the tree in inorder traversal
+   printf("Inorder traversal: ");
+   inorderTraversal(root);
+
+   return 0;
+}
+
+D:
+
+the pre-order traversal is: 3 1 2 5 4 6 7.
+This means that 3 is the root of the tree, 1 and 2 are in the left subtree, and 5 4 6 7 are in the right subtree.
+Pre-order: 3 1 2 5 4 6 7
+
+In order
+In-order: 1 2 3 4 5 6 7
+
+the post-order traversal is: 2 1 4 7 6 5 3.
+This means that 2 and 1 are in the left subtree, 4 7 6 5 are in the right subtree, and 3 is the root of the tree.
+Post-order: 2 1 4 7 6 5 3

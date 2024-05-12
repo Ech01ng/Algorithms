@@ -1,0 +1,83 @@
+A:
+
+What does recursion mean?
+Recursion is when a fucntion calls to itself one or more times to itself during execution
+Or when a data structure uses smaller instances of the exact same type of data structure when it represents its data
+
+B:
+
+#include <stdio.h>
+
+void towerOfHanoi(int n, char source, char auxiliary, char destination)
+{
+   if (n == 1)
+   {
+      printf("Move disk 1 from %c to %c\n", source, destination);
+      return;
+   }
+   towerOfHanoi(n - 1, source, destination, auxiliary);
+   printf("Move disk %d from %c to %c\n", n, source, destination);
+   towerOfHanoi(n - 1, auxiliary, source, destination);
+}
+
+int main()
+{
+   int n;
+   printf("Enter the number of disks: ");
+   scanf("%d", &n);
+   towerOfHanoi(n, 'A', 'B', 'C');
+   return 0;
+}
+
+C:
+
+towerOfHanoi(n = 3, source = 'A', auxiliary = 'B', destination = 'C')
+    n = 3
+        n != 1
+        towerOfHanoi(n = 2, source = 'A', auxiliary = 'C', destination = 'B')
+            n = 2
+                n != 1
+                towerOfHanoi(n = 1, source = 'A', auxiliary = 'B', destination = 'C')
+                    n = 1
+                    n == 1
+                    Move disk 1 from A to C
+                Move disk 2 from A to B
+                towerOfHanoi(n = 1, source = 'C', auxiliary = 'A', destination = 'B')
+                    n = 1
+                    n == 1
+                    Move disk 1 from C to B
+        Move disk 3 from A to C
+        towerOfHanoi(n = 2, source = 'B', auxiliary = 'A', destination = 'C')
+            n = 2
+                n != 1
+                towerOfHanoi(n = 1, source = 'B', auxiliary = 'C', destination = 'A')
+                    n = 1
+                    n == 1
+                    Move disk 1 from B to A
+                Move disk 2 from B to C
+                towerOfHanoi(n = 1, source = 'A', auxiliary = 'B', destination = 'C')
+                    n = 1
+                    n == 1
+                    Move disk 1 from A to C
+
+D:
+
+Merge sort and Tower of Hanoi is similar because of the divide and conquere concept
+it breaks down both problems into smaller sub problems of the same type until they reach a simple case which can be solved
+both problems use recursion (calling themselves [fucntion])
+
+E:
+
+void mergeSort(int arr[], int l, int r) 
+{
+    if (l < r) 
+    {
+        int m = l + (r - l) / 2;
+
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+
+        merge(arr, l, m, r);
+    }
+}
+

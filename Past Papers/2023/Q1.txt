@@ -1,0 +1,30 @@
+A:
+
+What is an algorithm?
+A step-by-step procedure or set of rules to be followed in calculations or other problem-solving operations.
+
+4 Key properties:
+- Unambiguity
+- Finiteness
+- Effectivenes
+- Input and Output
+
+An example of a real life algorithm is baking a cake:
+It has an input (ingridients and quantities)
+a procedure (step by step instructions)
+output (the cake)
+Unambiguity (each step is clearly defined)
+Finiteness (reciepe ends after a number of steps)
+Effectivenes (practical and can be carried out with common resources)
+
+B:
+
+1. Set the lower bound to 1 and the upper bound to 1000.
+2. Set the number of guesses to 0.
+3. Repeat the following steps until the number is guessed or the maximum number of guesses is reached:
+   4. Increment the number of guesses by 1.
+   5. Guess the number in the middle of the current range (lower bound + upper bound) / 2.
+   6. If the guessed number is correct, exit the loop.
+   7. If the guessed number is higher than the target number, set the upper bound to the guessed number - 1.
+   8. If the guessed number is lower than the target number, set the lower bound to the guessed number + 1.
+9. If the number is not guessed within the maximum number of guesses, indicate failure.
