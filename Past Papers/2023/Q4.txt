@@ -6,6 +6,7 @@ Orders of Complexity: is the measurements used in the Big O such as Constant Tim
 
 B:
 
+//Pseudocode
 bubbleSort(arr[], n)
     for i = 0 to n - 1
         for j = 0 to n - i - 1
@@ -42,6 +43,7 @@ Sum++
 
 F:
 
+//Optimize bubble sort
 Flagged Bubble Sort algorithm to sort an array in ascending order.
 It optimizes the sorting process by breaking out of the loop early if no swaps are made,
 indicating that the array is already sorted.

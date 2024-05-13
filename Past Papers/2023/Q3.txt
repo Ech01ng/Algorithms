@@ -13,6 +13,7 @@ For each node, all elements in the left subtree are less than the node, and all 
 
 B:
 
+//Pseudocode
 Push
 function push(stack, top, element):
     if top equals size of stack - 1:

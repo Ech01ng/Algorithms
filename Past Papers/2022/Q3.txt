@@ -13,6 +13,7 @@ B:
 
 Stack:
 
+//Pseudocode
 push(item):
    create a new node with the given item
    if the stack is empty:
