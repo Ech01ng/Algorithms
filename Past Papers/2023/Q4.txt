@@ -1,0 +1,58 @@
+A:
+
+Big O: a measurement of the worst case time it will take for an algoirhtm to do its job
+
+Orders of Complexity: is the measurements used in the Big O such as Constant Time O(1), Linear time O(N) etc
+
+B:
+
+bubbleSort(arr[], n)
+    for i = 0 to n - 1
+        for j = 0 to n - i - 1
+            if arr[j] > arr[j + 1]
+                swap arr[j] and arr[j + 1]
+
+C:
+
+Big O of Bubble Sort is O(n^2)
+
+D:
+
+Time Units of 80 would be 448 because when N doubles the Time Units quadruple
+
+E:
+
+I: O(n^2)
+
+For (i=0;i<N;i++)
+For (j=N;j>0;j--)
+Sum++
+
+II: O(Log n)
+
+For (i=0;i<N;i*=7)
+For (j=0;j<3;j++)
+Sum++
+
+III: O(n Log n)
+
+For (i=0;i<N;i++)
+For (j=N;j>0;j/=31)
+Sum++
+
+F:
+
+Flagged Bubble Sort algorithm to sort an array in ascending order.
+It optimizes the sorting process by breaking out of the loop early if no swaps are made,
+indicating that the array is already sorted.
+
+FlaggedBubbleSort(arr[], n)
+   bool swapped
+   for i = 0 to n - 1
+      swapped = false
+      for j = 0 to n - i - 1
+         if arr[j] > arr[j + 1]
+            swap arr[j] and arr[j + 1]
+            swapped = true
+      if swapped == false
+         break

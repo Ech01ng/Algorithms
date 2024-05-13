@@ -1,0 +1,48 @@
+A:
+
+is a problem-solving technique that involves breaking down a complex problem into smaller, more manageable subproblems.
+An example is the merge sort algorithm, which breaks down a big array to smaller arrays to make it easier to sort them.
+
+B:
+
+function mergeSort(arr):
+   if length of arr is less than or equal to 1:
+      return arr
+   
+   // Divide the array into two halves
+   middle = length of arr divided by 2
+   leftHalf = mergeSort(first half of arr)
+   rightHalf = mergeSort(second half of arr)
+   
+   // Merge the sorted halves
+   return merge(leftHalf, rightHalf)
+
+function merge(left, right):
+   result = empty array
+   leftIndex = 0
+   rightIndex = 0
+   
+   while leftIndex is less than length of left and rightIndex is less than length of right:
+      if left[leftIndex] is less than right[rightIndex]:
+         append left[leftIndex] to result
+         increment leftIndex
+      else:
+         append right[rightIndex] to result
+         increment rightIndex
+   
+   // Append the remaining elements
+   while leftIndex is less than length of left:
+      append left[leftIndex] to result
+      increment leftIndex
+   
+   while rightIndex is less than length of right:
+      append right[rightIndex] to result
+      increment rightIndex
+   
+   return result
+
+// Example usage
+array = [12, 15, 32, 65, 4, 9, 20]
+sortedArray = mergeSort(array)
+print(sortedArray)
+
