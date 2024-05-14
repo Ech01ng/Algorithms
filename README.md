@@ -47,6 +47,25 @@ This means that 2 and 1 are in the left subtree, 4 7 6 5 are in the right subtre
 <i>left to right downwards then root</i><br>
 Post-order: 2 1 4 7 6 5 3
 
+### Aditional Stuff for BST
+
+Perfect:<br>
+Is a type of binary tree in which all interior nodes have two children and all leaves have the same depth or same level.<br>
+<i>This means that every level of the tree is fully filled.</i>
+
+Balanced:<br>
+Is a binary tree in which the height of the two subtrees of every node never differ by more than one.
+
+```
+      4
+     / \
+   2     6
+  / \   / \
+ 1   3 5   7
+```
+
+Complete:
+
 ## Big O:
 
 A measurement of the worst case time it will take for an algoirhtm to do its job
