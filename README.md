@@ -76,7 +76,9 @@ Balanced:<br>
 Is a binary tree in which the height of the two subtrees of every node never differ by more than one.<br>
 A Perfect BST will ALWAYS be Balanced but not necessarily the other way
 
-```Perfect and Balanced
+<i>Perfect and Balanced</i>
+
+```
       4
      / \
    2     6
@@ -84,7 +86,9 @@ A Perfect BST will ALWAYS be Balanced but not necessarily the other way
  1   3 5   7
 ```
 
-```Balanced, NOT Perfect
+<i>Balanced, NOT Perfect</i>
+
+```
    3
    / \
   2   5
