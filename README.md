@@ -59,12 +59,15 @@ Post-order: 2 1 4 7 6 5 3
 
 ### Aditional Stuff for BST
 
-Perfect:<br>
+#### Perfect:<br>
+
 Is a type of binary tree in which all interior nodes have two children and all leaves have the same depth or same level.<br>
 <i>This means that every level of the tree is fully filled.</i><br>
-A Perfect BST will ALWAYS be Balanced but not necessarily the other way
+A Perfect BST will ALWAYS be Balanced and Complete but not necessarily the other way
 
-```Perfect and Balanced
+<i>Perfect means both Balanced and Complete</i>
+
+```
       4
      / \
    2     6
@@ -72,11 +75,12 @@ A Perfect BST will ALWAYS be Balanced but not necessarily the other way
  1   3 5   7
 ```
 
-Balanced:<br>
+#### Balanced:<br>
+
 Is a binary tree in which the height of the two subtrees of every node never differ by more than one.<br>
 A Perfect BST will ALWAYS be Balanced but not necessarily the other way
 
-<i>Perfect and Balanced</i>
+<i>Balanced and Perfect</i>
 
 ```
       4
@@ -89,14 +93,27 @@ A Perfect BST will ALWAYS be Balanced but not necessarily the other way
 <i>Balanced, NOT Perfect</i>
 
 ```
-   3
+    3
    / \
   2   5
  /   / \
 1   4   6
 ```
 
-Complete:
+#### Complete:<br>
+
+Is a binary tree in which every level, except possibly the last, is completely filled,<br>
+and all nodes in the last level are as far left as possible.
+
+<i>Complete</i>
+
+```
+    4
+   / \
+  2   5
+ / \   \
+1   3   6
+```
 
 ## Big O:
 
