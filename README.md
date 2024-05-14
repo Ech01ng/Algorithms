@@ -32,7 +32,17 @@ For each node, all elements in the left subtree are less than the node, and all 
 
 ### BST Traversal
 
-Given: 3, 5, 6, 1, 2, 4, 7
+Given:
+
+```
+3
+| \
+1   5
+|  / \
+2  4  6
+       \
+        7
+```
 
 the pre-order traversal is: 3 1 2 5 4 6 7.<br>
 This means that 3 is the root of the tree, 1 and 2 are in the left subtree, and 5 4 6 7 are in the right subtree.<br>
@@ -51,17 +61,35 @@ Post-order: 2 1 4 7 6 5 3
 
 Perfect:<br>
 Is a type of binary tree in which all interior nodes have two children and all leaves have the same depth or same level.<br>
-<i>This means that every level of the tree is fully filled.</i>
+<i>This means that every level of the tree is fully filled.</i><br>
+A Perfect BST will ALWAYS be Balanced but not necessarily the other way
 
-Balanced:<br>
-Is a binary tree in which the height of the two subtrees of every node never differ by more than one.
-
-```
+```Perfect and Balanced
       4
      / \
    2     6
   / \   / \
  1   3 5   7
+```
+
+Balanced:<br>
+Is a binary tree in which the height of the two subtrees of every node never differ by more than one.<br>
+A Perfect BST will ALWAYS be Balanced but not necessarily the other way
+
+```Perfect and Balanced
+      4
+     / \
+   2     6
+  / \   / \
+ 1   3 5   7
+```
+
+```Balanced, NOT Perfect
+   3
+   / \
+  2   5
+ /   / \
+1   4   6
 ```
 
 Complete:
