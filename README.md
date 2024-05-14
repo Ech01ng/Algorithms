@@ -32,13 +32,13 @@ For each node, all elements in the left subtree are less than the node, and all 
 
 ### BST Traversal
 
-3
-| \
-1 5
-| / \
-2 4 6
-\
- 7
+3<br>
+| \<br>
+1 5<br>
+| / \<br>
+2 4 6<br>
+\<br>
+7
 
 the pre-order traversal is: 3 1 2 5 4 6 7.
 This means that 3 is the root of the tree, 1 and 2 are in the left subtree, and 5 4 6 7 are in the right subtree.
