@@ -34,17 +34,17 @@ For each node, all elements in the left subtree are less than the node, and all 
 
 Given: 3, 5, 6, 1, 2, 4, 7
 
-the pre-order traversal is: 3 1 2 5 4 6 7.
-This means that 3 is the root of the tree, 1 and 2 are in the left subtree, and 5 4 6 7 are in the right subtree.
-<i>Root then Left to right upwards</i>
+the pre-order traversal is: 3 1 2 5 4 6 7.<br>
+This means that 3 is the root of the tree, 1 and 2 are in the left subtree, and 5 4 6 7 are in the right subtree.<br>
+<i>Root then Left to right upwards</i><br>
 Pre-order: 3 1 2 5 4 6 7
 
-<i>In order is all elements in order smallest to biggest</i>
+<i>In order is all elements in order smallest to biggest</i><br>
 In-order: 1 2 3 4 5 6 7
 
-the post-order traversal is: 2 1 4 7 6 5 3.
-This means that 2 and 1 are in the left subtree, 4 7 6 5 are in the right subtree, and 3 is the root of the tree.
-<i>left to right downwards then root</i>
+the post-order traversal is: 2 1 4 7 6 5 3.<br>
+This means that 2 and 1 are in the left subtree, 4 7 6 5 are in the right subtree, and 3 is the root of the tree.<br>
+<i>left to right downwards then root</i><br>
 Post-order: 2 1 4 7 6 5 3
 
 ## Big O:
