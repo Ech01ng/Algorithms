@@ -1,0 +1,57 @@
+A:
+
+Big O is the term used to describe in the worst case, the time taken for a program to run.
+An example would be the MergeSort algorithm, this algorithm has a Big O of N log N where N is the amount of values inputted
+
+B:
+
+256 Since as N doubles in size the Time Units quadruples, 20x2 = 40(N) & 4x4 = 16(Time Units)
+
+C:
+
+I: O(n)
+
+for (i=N; i>=1; i--)
+for (j=1; j<=10; j++)
+count++
+
+II: O(n log n)
+
+for (i=N; i>=1; i= i / 10)
+for (j=1; j<=N; j++)
+count++
+
+III: O(n^2 * log n)
+
+for (i=1; i<=N; i = i * 2)
+for (j=1; j<=N; j++)
+for (k=1; k<=N; k++)
+count++
+
+D:
+
+def brute_force_largest_product(A, T):
+   largest_product = 0
+   for i in range(len(A)):
+      for j in range(i+1, len(A)):
+         product = A[i] * A[j]
+         if product < T and product > largest_product:
+            largest_product = product
+   return largest_product
+
+   Big O of O(n^2)
+
+   To be O(log n)
+
+   int brute_force_largest_product(int A[], int N, int T) {
+    int largest_product = 0;
+    for (int i = 0; i < N; i++) {
+        for (int j = i + 1; j < N; j++) {
+            int product = A[i] * A[j];
+            if (product < T && product > largest_product) {
+                largest_product = product;
+            }
+        }
+    }
+    return largest_product;
+}

@@ -30,6 +30,29 @@ that means that the oldest piece of data added will be the one next in line to b
 Is a tree data structure in which each node has at most two children, referred to as the left child and the right child.
 For each node, all elements in the left subtree are less than the node, and all elements in the right subtree are greater.
 
+### BST Traversal
+
+3
+| \
+1 5
+| / \
+2 4 6
+\
+ 7
+
+the pre-order traversal is: 3 1 2 5 4 6 7.
+This means that 3 is the root of the tree, 1 and 2 are in the left subtree, and 5 4 6 7 are in the right subtree.
+<i>Root then Left to right up to down</i>
+Pre-order: 3 1 2 5 4 6 7
+
+<i>In order is all elements in order smallest to biggest</i>
+In-order: 1 2 3 4 5 6 7
+
+the post-order traversal is: 2 1 4 7 6 5 3.
+This means that 2 and 1 are in the left subtree, 4 7 6 5 are in the right subtree, and 3 is the root of the tree.
+<i>left to right down to up then root</i>
+Post-order: 2 1 4 7 6 5 3
+
 ## Big O:
 
 A measurement of the worst case time it will take for an algoirhtm to do its job

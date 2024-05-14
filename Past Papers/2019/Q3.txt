@@ -1,0 +1,71 @@
+A:
+
+Queue:
+Is a data structure that uses first in first out,
+that means that the oldest piece of data added will be the one next in line to be removed.
+
+enqueue -> 0 0 0 0 -> dequeue
+       Rear    Front
+
+Four comes in First
+4 0 0 0
+2 4 0 0
+3 2 4 0
+1 3 2 4
+Four leaves first
+0 1 2 3
+
+Stack:
+Is a data structure that uses last in first out,
+this means that the most recent piece of data added will be next to be removed.
+
+Push    Pop
+   \    ^
+    \  /
+     1
+One enters first
+
+Two now enters and has to Pop to let one out 
+    2
+    1
+
+Is the last one to Pop
+    1
+
+B:
+
+// Enqueue operation
+procedure enqueue(A, rear, front, data)
+   if rear = SIZE - 1 then
+     print "Queue is full"
+     return
+   end if
+
+   if front = -1 and rear = -1 then
+     front = rear = 0
+     
+   else
+     rear = rear + 1
+   end if
+
+   A[rear] = data
+
+end procedure
+
+// Dequeue operation
+function dequeue(A, rear, front)
+   if front = -1 then
+     print "Queue is empty"
+     return -1
+   end if
+
+   data = A[front]
+   if front = rear then
+     front = rear = -1
+
+   else
+     front = front + 1
+   end if
+
+   return data
+end function
