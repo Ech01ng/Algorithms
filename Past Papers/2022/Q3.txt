@@ -11,8 +11,6 @@ pointers to create a chain of data.
 
 B:
 
-Stack:
-
 //Pseudocode
 push(item):
    create a new node with the given item
